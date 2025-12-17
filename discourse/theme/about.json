@@ -1,23 +1,23 @@
 {
-  "name": "ELEVATE Commons Theme",
+  "name": "ELEVATE Professional Theme",
   "component": false,
   "about_url": "https://www.unitelearnelevate.com",
   "license_url": null,
   "authors": "ELEVATE Team",
-  "theme_version": "1.0.0",
+  "theme_version": "2.0.0",
   "minimum_discourse_version": "3.0.0",
   "color_schemes": {
-    "ELEVATE Light": {
-      "primary": "000000",
-      "secondary": "F5F0E8",
-      "tertiary": "7FB3D5",
-      "quaternary": "E67E22",
-      "header_background": "F5F0E8",
-      "header_primary": "000000",
-      "highlight": "E67E22",
-      "danger": "D24B5A",
-      "success": "27AE60",
-      "love": "E67E22"
+    "ELEVATE Professional": {
+      "primary": "1a202c",
+      "secondary": "f7fafc",
+      "tertiary": "4299e1",
+      "quaternary": "ed8936",
+      "header_background": "ffffff",
+      "header_primary": "1a202c",
+      "highlight": "4299e1",
+      "danger": "e53e3e",
+      "success": "38a169",
+      "love": "ed8936"
     }
   }
 }
