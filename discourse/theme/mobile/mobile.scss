@@ -1,0 +1,287 @@
+// ELEVATE Commons - Mobile-Specific Styles
+
+// ==========================================
+// Mobile Header
+// ==========================================
+.d-header {
+  padding: 0.5rem;
+
+  .title {
+    font-size: 1.2em;
+  }
+
+  .panel {
+    border-radius: 0 0 var(--elevate-radius-lg) var(--elevate-radius-lg);
+  }
+}
+
+// ==========================================
+// Mobile Navigation
+// ==========================================
+.mobile-nav {
+  background: white;
+  border-radius: var(--elevate-radius-lg) var(--elevate-radius-lg) 0 0;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+
+  .nav-item {
+    padding: var(--elevate-spacing-sm);
+    border-bottom: 1px solid var(--elevate-bg-light);
+
+    &.active {
+      background-color: rgba(127, 179, 213, 0.1);
+      border-left: 4px solid var(--elevate-secondary);
+    }
+  }
+}
+
+// ==========================================
+// Mobile Topic List
+// ==========================================
+.topic-list {
+  .topic-list-item {
+    padding: var(--elevate-spacing-sm);
+    border-radius: var(--elevate-radius-md);
+    margin-bottom: var(--elevate-spacing-xs);
+
+    .main-link {
+      font-size: 1em;
+    }
+
+    .topic-excerpt {
+      font-size: 0.9em;
+      margin-top: 0.5rem;
+      color: var(--elevate-text-light);
+      line-height: 1.5;
+    }
+  }
+}
+
+// ==========================================
+// Mobile Composer
+// ==========================================
+#reply-control {
+  .d-editor-container {
+    border-radius: var(--elevate-radius-md) var(--elevate-radius-md) 0 0;
+  }
+
+  .submit-panel {
+    padding: var(--elevate-spacing-sm);
+
+    .create {
+      width: 100%;
+      background-color: var(--elevate-accent);
+      border-radius: var(--elevate-radius-md);
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+  }
+}
+
+// ==========================================
+// Mobile Buttons
+// ==========================================
+.btn,
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1em;
+  width: 100%;
+  justify-content: center;
+}
+
+// ==========================================
+// Mobile User Menu
+// ==========================================
+.user-menu {
+  .quick-access-panel {
+    border-radius: var(--elevate-radius-lg);
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+// ==========================================
+// Mobile Category List
+// ==========================================
+.category-list {
+  .category-list-item {
+    padding: var(--elevate-spacing-sm);
+    border-radius: var(--elevate-radius-md);
+    margin-bottom: var(--elevate-spacing-sm);
+
+    .category-logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .category-name {
+      font-size: 1.1em;
+    }
+
+    .category-description {
+      font-size: 0.9em;
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+  }
+}
+
+// ==========================================
+// Mobile Search
+// ==========================================
+.search-menu {
+  .search-input {
+    font-size: 1em;
+    padding: var(--elevate-spacing-sm);
+    border-radius: var(--elevate-radius-md);
+  }
+
+  .results {
+    border-radius: 0 0 var(--elevate-radius-lg) var(--elevate-radius-lg);
+  }
+}
+
+// ==========================================
+// Mobile Posts
+// ==========================================
+.topic-post {
+  border-radius: var(--elevate-radius-md);
+  margin-bottom: var(--elevate-spacing-sm);
+
+  article {
+    padding: var(--elevate-spacing-sm);
+  }
+
+  .topic-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cooked {
+    font-size: 1em;
+    line-height: 1.6;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--elevate-radius-md);
+    }
+  }
+}
+
+// ==========================================
+// Mobile Modal
+// ==========================================
+.modal {
+  .modal-inner-container {
+    border-radius: var(--elevate-radius-lg);
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+}
+
+// ==========================================
+// Mobile Footer
+// ==========================================
+#main-outlet-wrapper > footer {
+  padding: var(--elevate-spacing-md) var(--elevate-spacing-sm);
+  border-radius: var(--elevate-radius-md) var(--elevate-radius-md) 0 0;
+
+  .footer-content {
+    text-align: center;
+
+    a {
+      display: block;
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+// ==========================================
+// Mobile Welcome Banner
+// ==========================================
+.welcome-banner {
+  padding: var(--elevate-spacing-md);
+  border-radius: var(--elevate-radius-md);
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 0.95em;
+  }
+}
+
+// ==========================================
+// Mobile Core Principles
+// ==========================================
+.core-principles {
+  .principle {
+    padding: var(--elevate-spacing-sm);
+    margin-bottom: var(--elevate-spacing-sm);
+
+    .number {
+      font-size: 2em;
+    }
+
+    h3 {
+      font-size: 1.1em;
+    }
+
+    p {
+      font-size: 0.9em;
+    }
+  }
+}
+
+// ==========================================
+// Mobile Touch Targets
+// ==========================================
+a,
+button,
+.btn,
+.topic-list-item {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+// ==========================================
+// Mobile Spacing Adjustments
+// ==========================================
+.container {
+  padding: 0 var(--elevate-spacing-sm);
+}
+
+.topic-body {
+  padding: var(--elevate-spacing-sm);
+}
+
+// ==========================================
+// Mobile Notifications
+// ==========================================
+.notification {
+  padding: var(--elevate-spacing-sm);
+  border-radius: var(--elevate-radius-md);
+  margin-bottom: var(--elevate-spacing-xs);
+
+  &.unread {
+    border-left: 3px solid var(--elevate-accent);
+  }
+}
+
+// ==========================================
+// Mobile Accessibility
+// ==========================================
+.skip-link {
+  font-size: 1.1em;
+  padding: 1rem;
+
+  &:focus {
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}

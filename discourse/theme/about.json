@@ -1,0 +1,52 @@
+{
+  "name": "ELEVATE Commons Theme",
+  "about_url": "https://www.unitelearnelevate.com",
+  "license_url": null,
+  "assets": {
+    "logo": "assets/logos/elevate-logo.png",
+    "logo-small": "assets/logos/elevate-logo-small.png"
+  },
+  "color_schemes": {
+    "ELEVATE Light": {
+      "primary": "2D3E50",
+      "secondary": "7FB3D5",
+      "tertiary": "E67E22",
+      "quaternary": "95A5A6",
+      "header_background": "FFFFFF",
+      "header_primary": "2D3E50",
+      "highlight": "F39C12",
+      "danger": "E74C3C",
+      "success": "27AE60",
+      "love": "E67E22"
+    },
+    "ELEVATE Dark": {
+      "primary": "7FB3D5",
+      "secondary": "34495E",
+      "tertiary": "F39C12",
+      "quaternary": "7F8C8D",
+      "header_background": "1A252F",
+      "header_primary": "ECF0F1",
+      "highlight": "E67E22",
+      "danger": "E74C3C",
+      "success": "2ECC71",
+      "love": "F39C12"
+    }
+  },
+  "fields": {
+    "show_geometric_pattern": {
+      "type": "bool",
+      "default": true,
+      "description": "Display geometric square pattern in header and footer"
+    },
+    "custom_font_headings": {
+      "type": "string",
+      "default": "Archivo Black",
+      "description": "Font family for headings"
+    },
+    "enable_rounded_corners": {
+      "type": "bool",
+      "default": true,
+      "description": "Enable rounded corners on cards and containers"
+    }
+  }
+}

@@ -1,0 +1,179 @@
+// ELEVATE Commons - Desktop-Specific Styles
+
+// ==========================================
+// Desktop Navigation Enhancements
+// ==========================================
+.d-header {
+  .header-buttons {
+    .login-button,
+    .sign-up-button {
+      margin-left: 1rem;
+    }
+  }
+}
+
+// ==========================================
+// Desktop Topic List
+// ==========================================
+.topic-list {
+  .topic-list-item {
+    padding: 1.5rem;
+
+    .main-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .topic-excerpt {
+      display: block;
+      margin-top: 0.5rem;
+      color: var(--elevate-text-light);
+      line-height: 1.6;
+    }
+  }
+}
+
+// ==========================================
+// Desktop Sidebar
+// ==========================================
+.sidebar-section {
+  background: white;
+  border-radius: var(--elevate-radius-lg);
+  padding: var(--elevate-spacing-md);
+  margin-bottom: var(--elevate-spacing-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+// ==========================================
+// Desktop User Menu
+// ==========================================
+.user-menu {
+  .menu-panel {
+    border-radius: var(--elevate-radius-lg);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// ==========================================
+// Desktop Composer
+// ==========================================
+#reply-control {
+  .d-editor-container {
+    border-radius: var(--elevate-radius-lg);
+  }
+
+  .submit-panel {
+    .create {
+      background-color: var(--elevate-accent);
+      border-radius: var(--elevate-radius-md);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+
+      &:hover {
+        background-color: darken(#E67E22, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
+      }
+    }
+  }
+}
+
+// ==========================================
+// Desktop Search
+// ==========================================
+.search-menu {
+  .results {
+    border-radius: var(--elevate-radius-lg);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// ==========================================
+// Desktop Category Pages
+// ==========================================
+.category-list {
+  .category-list-item {
+    border-radius: var(--elevate-radius-lg);
+    padding: var(--elevate-spacing-md);
+    margin-bottom: var(--elevate-spacing-md);
+    background: white;
+    border: 1px solid #E0E0E0;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+      border-color: var(--elevate-secondary);
+    }
+
+    .category-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--elevate-radius-md);
+    }
+
+    .category-description {
+      font-size: 1.05em;
+      line-height: 1.6;
+      color: var(--elevate-text-light);
+    }
+  }
+}
+
+// ==========================================
+// Desktop User Profile
+// ==========================================
+.user-main {
+  .user-content {
+    border-radius: var(--elevate-radius-lg);
+    background: white;
+    padding: var(--elevate-spacing-lg);
+  }
+
+  .user-profile-avatar {
+    border-radius: 50%;
+    border: 4px solid var(--elevate-secondary);
+  }
+}
+
+// ==========================================
+// Desktop Notifications
+// ==========================================
+.user-notifications {
+  .notification {
+    border-radius: var(--elevate-radius-md);
+    padding: var(--elevate-spacing-sm);
+    margin-bottom: var(--elevate-spacing-xs);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--elevate-bg-light);
+    }
+
+    &.unread {
+      border-left: 4px solid var(--elevate-accent);
+    }
+  }
+}
+
+// ==========================================
+// Desktop Modal Dialogs
+// ==========================================
+.modal {
+  .modal-inner-container {
+    border-radius: var(--elevate-radius-lg);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  }
+
+  .modal-header {
+    border-radius: var(--elevate-radius-lg) var(--elevate-radius-lg) 0 0;
+    background: linear-gradient(135deg, var(--elevate-primary) 0%, var(--elevate-bg-dark) 100%);
+    color: white;
+    padding: var(--elevate-spacing-md);
+
+    h3 {
+      color: white;
+    }
+  }
+}
