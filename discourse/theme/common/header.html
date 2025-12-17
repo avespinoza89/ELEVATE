@@ -1,0 +1,90 @@
+<script type="text/discourse-plugin" version="0.8">
+  // ELEVATE Commons Custom Header
+
+  api.decorateWidget('header:before', helper => {
+    // Add geometric pattern to header
+    if (settings.show_geometric_pattern) {
+      return helper.h('div.elevate-header-pattern');
+    }
+  });
+
+  // Custom welcome message for first-time visitors
+  api.onPageChange(() => {
+    const currentUser = api.getCurrentUser();
+    if (!currentUser && !localStorage.getItem('elevate_welcomed')) {
+      // Show welcome modal for guests
+      localStorage.setItem('elevate_welcomed', 'true');
+    }
+  });
+</script>
+
+<!-- Custom Logo -->
+<div class="elevate-custom-logo">
+  <a href="/" title="ELEVATE Commons">
+    <img src="/uploads/default/original/1X/elevate-logo.png" alt="ELEVATE" class="elevate-logo" />
+  </a>
+</div>
+
+<!-- Tagline -->
+<div class="elevate-tagline">
+  <span>Unite. Learn. ELEVATE</span>
+</div>
+
+<!-- Quick Links -->
+<div class="elevate-quick-links">
+  <a href="/about" class="elevate-link">About</a>
+  <a href="/categories" class="elevate-link">Categories</a>
+  <a href="/latest" class="elevate-link">Latest</a>
+  <a href="/guidelines" class="elevate-link">Guidelines</a>
+</div>
+
+<style>
+  .elevate-custom-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .elevate-logo {
+    max-height: 50px;
+    width: auto;
+  }
+
+  .elevate-tagline {
+    font-family: var(--elevate-font-headings);
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 1rem;
+  }
+
+  .elevate-quick-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto;
+    padding-right: 1rem;
+  }
+
+  .elevate-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+  }
+
+  .elevate-link:hover {
+    border-bottom-color: var(--elevate-secondary);
+    color: var(--elevate-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .elevate-tagline {
+      display: none;
+    }
+
+    .elevate-quick-links {
+      display: none;
+    }
+  }
+</style>

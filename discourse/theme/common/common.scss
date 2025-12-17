@@ -1,0 +1,465 @@
+// ELEVATE Commons Theme - Main Stylesheet
+// Based on the ELEVATE website design
+
+// ==========================================
+// CSS Variables
+// ==========================================
+:root {
+  // Brand Colors
+  --elevate-primary: #2D3E50;
+  --elevate-secondary: #7FB3D5;
+  --elevate-accent: #E67E22;
+  --elevate-bg-light: #ECF0F1;
+  --elevate-bg-dark: #1A252F;
+  --elevate-text-primary: #2C3E50;
+  --elevate-text-light: #7F8C8D;
+
+  // Spacing
+  --elevate-spacing-xs: 0.5rem;
+  --elevate-spacing-sm: 1rem;
+  --elevate-spacing-md: 1.5rem;
+  --elevate-spacing-lg: 2rem;
+  --elevate-spacing-xl: 3rem;
+
+  // Border Radius
+  --elevate-radius-sm: 4px;
+  --elevate-radius-md: 8px;
+  --elevate-radius-lg: 20px;
+  --elevate-radius-xl: 50px;
+
+  // Typography
+  --elevate-font-headings: 'Archivo Black', sans-serif;
+  --elevate-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+// ==========================================
+// Typography
+// ==========================================
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+h1, h2, h3, h4, h5, h6,
+.topic-title,
+.fancy-title,
+.category-name {
+  font-family: var(--elevate-font-headings) !important;
+  font-weight: 900;
+}
+
+body {
+  font-family: var(--elevate-font-body);
+  color: var(--elevate-text-primary);
+}
+
+// ==========================================
+// Header Customization
+// ==========================================
+.d-header {
+  background: linear-gradient(135deg, var(--elevate-primary) 0%, var(--elevate-bg-dark) 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .title {
+    color: white;
+    font-family: var(--elevate-font-headings);
+    font-size: 1.5em;
+  }
+
+  .d-icon {
+    color: white;
+  }
+
+  .login-button,
+  .sign-up-button {
+    background-color: var(--elevate-accent);
+    color: white;
+    border-radius: var(--elevate-radius-md);
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: darken(#E67E22, 10%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
+    }
+  }
+}
+
+// Geometric Pattern Overlay
+.d-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-image:
+    linear-gradient(45deg, transparent 30%, rgba(127, 179, 213, 0.1) 30%, rgba(127, 179, 213, 0.1) 70%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(127, 179, 213, 0.1) 30%, rgba(127, 179, 213, 0.1) 70%, transparent 70%);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+// ==========================================
+// Navigation
+// ==========================================
+.nav-pills > li {
+  > a {
+    color: var(--elevate-text-primary);
+    border-radius: var(--elevate-radius-md);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(127, 179, 213, 0.1);
+      color: var(--elevate-primary);
+    }
+
+    &.active {
+      background-color: var(--elevate-secondary);
+      color: white;
+    }
+  }
+}
+
+// ==========================================
+// Buttons
+// ==========================================
+.btn,
+.btn-primary,
+.btn-default {
+  border-radius: var(--elevate-radius-md);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--elevate-accent);
+  color: white;
+
+  &:hover {
+    background-color: darken(#E67E22, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
+  }
+}
+
+.btn-default {
+  background-color: var(--elevate-bg-light);
+  color: var(--elevate-text-primary);
+
+  &:hover {
+    background-color: darken(#ECF0F1, 5%);
+  }
+}
+
+// ==========================================
+// Cards & Containers
+// ==========================================
+.topic-list-item,
+.latest-topic-list-item,
+.category-box {
+  border-radius: var(--elevate-radius-lg);
+  border: 1px solid #E0E0E0;
+  padding: var(--elevate-spacing-sm);
+  margin-bottom: var(--elevate-spacing-sm);
+  transition: all 0.3s ease;
+  background: white;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: var(--elevate-secondary);
+  }
+}
+
+// ==========================================
+// Categories
+// ==========================================
+.category-logo {
+  border-radius: var(--elevate-radius-md);
+}
+
+.badge-category {
+  border-radius: var(--elevate-radius-sm);
+  padding: 0.25rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.85em;
+}
+
+// Category-specific colors
+.category[data-category-id="1"] { // General Discussion
+  .badge-category {
+    background-color: #3498DB;
+  }
+}
+
+.category[data-category-id="2"] { // Learning & Evaluation
+  .badge-category {
+    background-color: #9B59B6;
+  }
+}
+
+.category[data-category-id="3"] { // Resource Library
+  .badge-category {
+    background-color: #1ABC9C;
+  }
+}
+
+.category[data-category-id="4"] { // Collaboration
+  .badge-category {
+    background-color: #E67E22;
+  }
+}
+
+// ==========================================
+// Topics & Posts
+// ==========================================
+.topic-post {
+  border-radius: var(--elevate-radius-lg);
+  margin-bottom: var(--elevate-spacing-md);
+  background: white;
+
+  article {
+    padding: var(--elevate-spacing-md);
+  }
+}
+
+.topic-body {
+  .cooked {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: var(--elevate-text-primary);
+  }
+}
+
+// ==========================================
+// User Cards
+// ==========================================
+.user-card {
+  border-radius: var(--elevate-radius-lg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  .user-card-avatar {
+    border-radius: 50%;
+    border: 3px solid var(--elevate-secondary);
+  }
+}
+
+// ==========================================
+// Footer
+// ==========================================
+#main-outlet-wrapper > footer {
+  background: linear-gradient(135deg, var(--elevate-bg-dark) 0%, var(--elevate-primary) 100%);
+  color: white;
+  padding: var(--elevate-spacing-xl) var(--elevate-spacing-md);
+  margin-top: var(--elevate-spacing-xl);
+  border-radius: var(--elevate-radius-lg) var(--elevate-radius-lg) 0 0;
+  position: relative;
+  overflow: hidden;
+
+  // Geometric pattern
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      linear-gradient(45deg, transparent 30%, rgba(127, 179, 213, 0.05) 30%, rgba(127, 179, 213, 0.05) 70%, transparent 70%),
+      linear-gradient(-45deg, transparent 30%, rgba(127, 179, 213, 0.05) 30%, rgba(127, 179, 213, 0.05) 70%, transparent 70%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    pointer-events: none;
+  }
+
+  a {
+    color: var(--elevate-secondary);
+
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+}
+
+// ==========================================
+// Welcome Banner
+// ==========================================
+.welcome-banner {
+  background: linear-gradient(135deg, var(--elevate-secondary) 0%, var(--elevate-primary) 100%);
+  color: white;
+  padding: var(--elevate-spacing-xl);
+  border-radius: var(--elevate-radius-lg);
+  margin-bottom: var(--elevate-spacing-lg);
+  position: relative;
+  overflow: hidden;
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: var(--elevate-spacing-sm);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  p {
+    font-size: 1.2em;
+    opacity: 0.95;
+  }
+
+  // Geometric pattern
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background-image:
+      linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.1) 70%, transparent 70%),
+      linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.1) 70%, transparent 70%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    pointer-events: none;
+  }
+}
+
+// ==========================================
+// Core Principles Section
+// ==========================================
+.core-principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--elevate-spacing-md);
+  margin: var(--elevate-spacing-lg) 0;
+
+  .principle {
+    background: white;
+    padding: var(--elevate-spacing-md);
+    border-radius: var(--elevate-radius-lg);
+    border: 2px solid var(--elevate-bg-light);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--elevate-secondary);
+      box-shadow: 0 4px 16px rgba(127, 179, 213, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .number {
+      font-size: 3em;
+      font-family: var(--elevate-font-headings);
+      color: var(--elevate-secondary);
+      line-height: 1;
+      margin-bottom: var(--elevate-spacing-sm);
+    }
+
+    h3 {
+      color: var(--elevate-primary);
+      margin-bottom: var(--elevate-spacing-xs);
+    }
+
+    p {
+      color: var(--elevate-text-light);
+      font-size: 0.95em;
+    }
+  }
+}
+
+// ==========================================
+// Mobile Responsiveness
+// ==========================================
+@media (max-width: 768px) {
+  .d-header::before {
+    width: 150px;
+  }
+
+  .welcome-banner {
+    h1 {
+      font-size: 1.8em;
+    }
+
+    p {
+      font-size: 1em;
+    }
+  }
+
+  .core-principles {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ==========================================
+// Dark Mode Support
+// ==========================================
+.dark-mode {
+  .topic-list-item,
+  .latest-topic-list-item,
+  .topic-post {
+    background: var(--elevate-bg-dark);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .core-principles .principle {
+    background: var(--elevate-bg-dark);
+    border-color: rgba(255, 255, 255, 0.1);
+
+    .number {
+      color: var(--elevate-secondary);
+    }
+
+    h3 {
+      color: var(--elevate-secondary);
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+// ==========================================
+// Accessibility
+// ==========================================
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--elevate-accent);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// Focus states
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--elevate-accent);
+  outline-offset: 2px;
+}
+
+// ==========================================
+// Print Styles
+// ==========================================
+@media print {
+  .d-header,
+  footer,
+  .nav-pills,
+  .topic-timeline {
+    display: none;
+  }
+
+  .topic-post {
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+}
