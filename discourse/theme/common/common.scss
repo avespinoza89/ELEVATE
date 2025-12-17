@@ -1,465 +1,565 @@
-// ELEVATE Commons Theme - Main Stylesheet
-// Based on the ELEVATE website design
+/**
+ * ELEVATE Commons Theme - Common Styles
+ * Inspired by clean, minimal design principles
+ * Version: 1.0.0
+ */
 
-// ==========================================
-// CSS Variables
-// ==========================================
+/* ========================================
+   CSS Variables - ELEVATE Brand Colors
+   ======================================== */
+
 :root {
-  // Brand Colors
-  --elevate-primary: #2D3E50;
-  --elevate-secondary: #7FB3D5;
-  --elevate-accent: #E67E22;
-  --elevate-bg-light: #ECF0F1;
-  --elevate-bg-dark: #1A252F;
-  --elevate-text-primary: #2C3E50;
-  --elevate-text-light: #7F8C8D;
+  /* ELEVATE Brand Colors */
+  --elevate-primary: #7FB3D5;      /* Sky Blue - primary accent */
+  --elevate-secondary: #E67E22;    /* Warm Orange - secondary accent */
+  --elevate-tertiary: #2D3E50;     /* Deep Blue - tertiary accent */
+  --elevate-background: #F5F0E8;   /* Warm Beige - main background */
+  --elevate-text: #000000;         /* Black - primary text */
+  --elevate-text-light: #4a4a4a;   /* Dark Gray - secondary text */
 
-  // Spacing
-  --elevate-spacing-xs: 0.5rem;
-  --elevate-spacing-sm: 1rem;
-  --elevate-spacing-md: 1.5rem;
-  --elevate-spacing-lg: 2rem;
-  --elevate-spacing-xl: 3rem;
+  /* Semantic Colors */
+  --elevate-success: #27AE60;
+  --elevate-danger: #D24B5A;
+  --elevate-warning: #F39C12;
 
-  // Border Radius
-  --elevate-radius-sm: 4px;
-  --elevate-radius-md: 8px;
-  --elevate-radius-lg: 20px;
-  --elevate-radius-xl: 50px;
-
-  // Typography
-  --elevate-font-headings: 'Archivo Black', sans-serif;
-  --elevate-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* UI Colors */
+  --elevate-border: #d4cec4;
+  --elevate-hover: #ebe5dd;
+  --elevate-selected: #e0d9cf;
 }
 
-// ==========================================
-// Typography
-// ==========================================
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
-
-h1, h2, h3, h4, h5, h6,
-.topic-title,
-.fancy-title,
-.category-name {
-  font-family: var(--elevate-font-headings) !important;
-  font-weight: 900;
-}
+/* ========================================
+   Base Styles
+   ======================================== */
 
 body {
-  font-family: var(--elevate-font-body);
-  color: var(--elevate-text-primary);
+  background-color: var(--elevate-background);
+  color: var(--elevate-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
 }
 
-// ==========================================
-// Header Customization
-// ==========================================
-.d-header {
-  background: linear-gradient(135deg, var(--elevate-primary) 0%, var(--elevate-bg-dark) 100%);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* ========================================
+   Typography
+   ======================================== */
 
-  .title {
-    color: white;
-    font-family: var(--elevate-font-headings);
-    font-size: 1.5em;
-  }
-
-  .d-icon {
-    color: white;
-  }
-
-  .login-button,
-  .sign-up-button {
-    background-color: var(--elevate-accent);
-    color: white;
-    border-radius: var(--elevate-radius-md);
-    padding: 0.5rem 1.5rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: darken(#E67E22, 10%);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
-    }
-  }
-}
-
-// Geometric Pattern Overlay
-.d-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100%;
-  background-image:
-    linear-gradient(45deg, transparent 30%, rgba(127, 179, 213, 0.1) 30%, rgba(127, 179, 213, 0.1) 70%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(127, 179, 213, 0.1) 30%, rgba(127, 179, 213, 0.1) 70%, transparent 70%);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-// ==========================================
-// Navigation
-// ==========================================
-.nav-pills > li {
-  > a {
-    color: var(--elevate-text-primary);
-    border-radius: var(--elevate-radius-md);
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: rgba(127, 179, 213, 0.1);
-      color: var(--elevate-primary);
-    }
-
-    &.active {
-      background-color: var(--elevate-secondary);
-      color: white;
-    }
-  }
-}
-
-// ==========================================
-// Buttons
-// ==========================================
-.btn,
-.btn-primary,
-.btn-default {
-  border-radius: var(--elevate-radius-md);
+h1, h2, h3, h4, h5, h6 {
+  color: var(--elevate-text);
   font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
+  line-height: 1.3;
 }
 
-.btn-primary {
-  background-color: var(--elevate-accent);
-  color: white;
+a {
+  color: var(--elevate-primary);
+  text-decoration: none;
 
   &:hover {
-    background-color: darken(#E67E22, 10%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
+    color: var(--elevate-tertiary);
+    text-decoration: underline;
   }
 }
 
-.btn-default {
-  background-color: var(--elevate-bg-light);
-  color: var(--elevate-text-primary);
+/* ========================================
+   Header
+   ======================================== */
+
+.d-header {
+  background-color: var(--elevate-background);
+  border-bottom: 1px solid var(--elevate-border);
+  box-shadow: none;
+}
+
+.d-header-wrap {
+  background-color: var(--elevate-background);
+}
+
+.title {
+  color: var(--elevate-text);
+  font-weight: 600;
+}
+
+.d-icon {
+  color: var(--elevate-text);
+}
+
+/* ========================================
+   Navigation & Sidebar
+   ======================================== */
+
+.navigation-topics {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.nav-pills > li > a {
+  color: var(--elevate-text-light);
 
   &:hover {
-    background-color: darken(#ECF0F1, 5%);
+    background-color: var(--elevate-hover);
+    color: var(--elevate-text);
+  }
+
+  &.active {
+    background-color: var(--elevate-primary);
+    color: white;
   }
 }
 
-// ==========================================
-// Cards & Containers
-// ==========================================
-.topic-list-item,
-.latest-topic-list-item,
-.category-box {
-  border-radius: var(--elevate-radius-lg);
-  border: 1px solid #E0E0E0;
-  padding: var(--elevate-spacing-sm);
-  margin-bottom: var(--elevate-spacing-sm);
-  transition: all 0.3s ease;
-  background: white;
+/* ========================================
+   Categories
+   ======================================== */
 
-  &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-    border-color: var(--elevate-secondary);
+.category-list {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+
+  tbody tr {
+    border-bottom: 1px solid var(--elevate-border);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: var(--elevate-hover);
+    }
   }
 }
 
-// ==========================================
-// Categories
-// ==========================================
+.category-list-item {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+
+  &:hover {
+    background-color: var(--elevate-hover);
+  }
+}
+
 .category-logo {
-  border-radius: var(--elevate-radius-md);
+  border-radius: 4px;
+}
+
+.category-text-title {
+  color: var(--elevate-text);
+  font-weight: 600;
+}
+
+.category-text-description {
+  color: var(--elevate-text-light);
+}
+
+/* Category Boxes - Square Style */
+.badge-wrapper.box {
+  border-radius: 3px;
 }
 
 .badge-category {
-  border-radius: var(--elevate-radius-sm);
-  padding: 0.25rem 0.75rem;
-  font-weight: 600;
-  font-size: 0.85em;
+  border-radius: 3px;
+  padding: 4px 8px;
 }
 
-// Category-specific colors
-.category[data-category-id="1"] { // General Discussion
-  .badge-category {
-    background-color: #3498DB;
+/* ========================================
+   Topics
+   ======================================== */
+
+.topic-list {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+
+  thead {
+    border-bottom: 1px solid var(--elevate-border);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--elevate-border);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: var(--elevate-hover);
+    }
   }
 }
 
-.category[data-category-id="2"] { // Learning & Evaluation
-  .badge-category {
-    background-color: #9B59B6;
+.topic-list-item {
+  &.visited {
+    .topic-title {
+      color: var(--elevate-text-light);
+    }
   }
 }
 
-.category[data-category-id="3"] { // Resource Library
-  .badge-category {
-    background-color: #1ABC9C;
-  }
+.topic-title {
+  color: var(--elevate-text);
+  font-weight: 500;
 }
 
-.category[data-category-id="4"] { // Collaboration
-  .badge-category {
-    background-color: #E67E22;
-  }
+.topic-excerpt {
+  color: var(--elevate-text-light);
 }
 
-// ==========================================
-// Topics & Posts
-// ==========================================
+/* ========================================
+   Posts
+   ======================================== */
+
 .topic-post {
-  border-radius: var(--elevate-radius-lg);
-  margin-bottom: var(--elevate-spacing-md);
-  background: white;
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  margin-bottom: 1rem;
 
   article {
-    padding: var(--elevate-spacing-md);
+    padding: 1.5rem;
   }
 }
 
 .topic-body {
-  .cooked {
-    font-size: 1.05em;
-    line-height: 1.7;
-    color: var(--elevate-text-primary);
-  }
+  background-color: white;
 }
 
-// ==========================================
-// User Cards
-// ==========================================
-.user-card {
-  border-radius: var(--elevate-radius-lg);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-
-  .user-card-avatar {
-    border-radius: 50%;
-    border: 3px solid var(--elevate-secondary);
-  }
-}
-
-// ==========================================
-// Footer
-// ==========================================
-#main-outlet-wrapper > footer {
-  background: linear-gradient(135deg, var(--elevate-bg-dark) 0%, var(--elevate-primary) 100%);
-  color: white;
-  padding: var(--elevate-spacing-xl) var(--elevate-spacing-md);
-  margin-top: var(--elevate-spacing-xl);
-  border-radius: var(--elevate-radius-lg) var(--elevate-radius-lg) 0 0;
-  position: relative;
-  overflow: hidden;
-
-  // Geometric pattern
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-      linear-gradient(45deg, transparent 30%, rgba(127, 179, 213, 0.05) 30%, rgba(127, 179, 213, 0.05) 70%, transparent 70%),
-      linear-gradient(-45deg, transparent 30%, rgba(127, 179, 213, 0.05) 30%, rgba(127, 179, 213, 0.05) 70%, transparent 70%);
-    background-size: 60px 60px;
-    background-position: 0 0, 30px 30px;
-    pointer-events: none;
-  }
-
-  a {
-    color: var(--elevate-secondary);
-
-    &:hover {
-      color: white;
-      text-decoration: underline;
-    }
-  }
-}
-
-// ==========================================
-// Welcome Banner
-// ==========================================
-.welcome-banner {
-  background: linear-gradient(135deg, var(--elevate-secondary) 0%, var(--elevate-primary) 100%);
-  color: white;
-  padding: var(--elevate-spacing-xl);
-  border-radius: var(--elevate-radius-lg);
-  margin-bottom: var(--elevate-spacing-lg);
-  position: relative;
-  overflow: hidden;
-
-  h1 {
-    font-size: 2.5em;
-    margin-bottom: var(--elevate-spacing-sm);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
+.cooked {
+  color: var(--elevate-text);
 
   p {
-    font-size: 1.2em;
-    opacity: 0.95;
-  }
-
-  // Geometric pattern
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -50px;
-    right: -50px;
-    width: 300px;
-    height: 300px;
-    background-image:
-      linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.1) 70%, transparent 70%),
-      linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.1) 70%, transparent 70%);
-    background-size: 40px 40px;
-    background-position: 0 0, 20px 20px;
-    pointer-events: none;
+    margin-bottom: 1rem;
   }
 }
 
-// ==========================================
-// Core Principles Section
-// ==========================================
-.core-principles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--elevate-spacing-md);
-  margin: var(--elevate-spacing-lg) 0;
+.post-menu-area {
+  .actions {
+    button {
+      color: var(--elevate-text-light);
 
-  .principle {
-    background: white;
-    padding: var(--elevate-spacing-md);
-    border-radius: var(--elevate-radius-lg);
-    border: 2px solid var(--elevate-bg-light);
-    transition: all 0.3s ease;
+      &:hover {
+        background-color: var(--elevate-hover);
+        color: var(--elevate-text);
+      }
+    }
+  }
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+
+.btn {
+  border-radius: 4px;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+
+  &.btn-primary {
+    background-color: var(--elevate-primary);
+    border-color: var(--elevate-primary);
+    color: white;
 
     &:hover {
-      border-color: var(--elevate-secondary);
-      box-shadow: 0 4px 16px rgba(127, 179, 213, 0.2);
-      transform: translateY(-4px);
+      background-color: var(--elevate-tertiary);
+      border-color: var(--elevate-tertiary);
     }
+  }
 
-    .number {
-      font-size: 3em;
-      font-family: var(--elevate-font-headings);
-      color: var(--elevate-secondary);
-      line-height: 1;
-      margin-bottom: var(--elevate-spacing-sm);
-    }
+  &.btn-danger {
+    background-color: var(--elevate-danger);
+    border-color: var(--elevate-danger);
 
-    h3 {
-      color: var(--elevate-primary);
-      margin-bottom: var(--elevate-spacing-xs);
-    }
-
-    p {
-      color: var(--elevate-text-light);
-      font-size: 0.95em;
+    &:hover {
+      background-color: #b13e4a;
     }
   }
 }
 
-// ==========================================
-// Mobile Responsiveness
-// ==========================================
-@media (max-width: 768px) {
-  .d-header::before {
-    width: 150px;
-  }
+/* ========================================
+   Forms
+   ======================================== */
 
-  .welcome-banner {
-    h1 {
-      font-size: 1.8em;
-    }
-
-    p {
-      font-size: 1em;
-    }
-  }
-
-  .core-principles {
-    grid-template-columns: 1fr;
-  }
-}
-
-// ==========================================
-// Dark Mode Support
-// ==========================================
-.dark-mode {
-  .topic-list-item,
-  .latest-topic-list-item,
-  .topic-post {
-    background: var(--elevate-bg-dark);
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .core-principles .principle {
-    background: var(--elevate-bg-dark);
-    border-color: rgba(255, 255, 255, 0.1);
-
-    .number {
-      color: var(--elevate-secondary);
-    }
-
-    h3 {
-      color: var(--elevate-secondary);
-    }
-
-    p {
-      color: rgba(255, 255, 255, 0.7);
-    }
-  }
-}
-
-// ==========================================
-// Accessibility
-// ==========================================
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--elevate-accent);
-  color: white;
-  padding: 8px;
-  text-decoration: none;
-  z-index: 100;
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+.select-kit .select-kit-header {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  color: var(--elevate-text);
 
   &:focus {
-    top: 0;
+    border-color: var(--elevate-primary);
+    outline: none;
   }
 }
 
-// Focus states
-a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 3px solid var(--elevate-accent);
-  outline-offset: 2px;
+/* ========================================
+   Composer
+   ======================================== */
+
+.d-editor-container {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
 }
 
-// ==========================================
-// Print Styles
-// ==========================================
+.d-editor-textarea-wrapper {
+  background-color: white;
+}
+
+.d-editor-preview-wrapper {
+  background-color: white;
+  border-left: 1px solid var(--elevate-border);
+}
+
+#reply-control {
+  background-color: white;
+  border-top: 1px solid var(--elevate-border);
+}
+
+/* ========================================
+   Cards & Containers
+   ======================================== */
+
+.user-card,
+.group-card {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about.groups,
+.about.admins,
+.about.moderators {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+/* ========================================
+   Badges & Labels
+   ======================================== */
+
+.badge-notification {
+  background-color: var(--elevate-primary);
+  color: white;
+  border-radius: 12px;
+}
+
+.badge-notification.new-posts,
+.badge-notification.unread-posts {
+  background-color: var(--elevate-secondary);
+}
+
+/* ========================================
+   Search
+   ======================================== */
+
+.search-menu {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+
+  .results {
+    background-color: white;
+
+    .item {
+      border-bottom: 1px solid var(--elevate-border);
+
+      &:hover {
+        background-color: var(--elevate-hover);
+      }
+    }
+  }
+}
+
+/* ========================================
+   User Menu
+   ======================================== */
+
+.menu-panel {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quick-access-panel {
+  background-color: white;
+
+  li {
+    border-bottom: 1px solid var(--elevate-border);
+
+    &:hover {
+      background-color: var(--elevate-hover);
+    }
+  }
+}
+
+/* ========================================
+   Notifications
+   ======================================== */
+
+.notification {
+  border-bottom: 1px solid var(--elevate-border);
+
+  &:hover {
+    background-color: var(--elevate-hover);
+  }
+
+  &.unread {
+    background-color: #f8f6f3;
+  }
+}
+
+/* ========================================
+   Timeline
+   ======================================== */
+
+.topic-timeline {
+  .timeline-container {
+    background-color: white;
+    border: 1px solid var(--elevate-border);
+    border-radius: 4px;
+  }
+}
+
+/* ========================================
+   Suggested Topics
+   ======================================== */
+
+#suggested-topics {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  margin-top: 2rem;
+  padding: 1.5rem;
+
+  h3 {
+    color: var(--elevate-text);
+    margin-bottom: 1rem;
+  }
+}
+
+/* ========================================
+   User Profiles
+   ======================================== */
+
+.user-main {
+  .about {
+    background-color: white;
+    border: 1px solid var(--elevate-border);
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+}
+
+.user-content {
+  background-color: white;
+  border: 1px solid var(--elevate-border);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.footer-wrapper {
+  background-color: var(--elevate-background);
+  border-top: 1px solid var(--elevate-border);
+  color: var(--elevate-text-light);
+  padding: 2rem 0;
+}
+
+/* ========================================
+   Utilities
+   ======================================== */
+
+.wrap {
+  background-color: var(--elevate-background);
+}
+
+/* Loading Indicator */
+.spinner {
+  border-color: var(--elevate-primary);
+}
+
+/* Quotes */
+aside.quote {
+  background-color: #f8f6f3;
+  border-left: 4px solid var(--elevate-primary);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Code Blocks */
+pre {
+  background-color: #2b2b2b;
+  border-radius: 4px;
+
+  code {
+    background-color: transparent;
+  }
+}
+
+code {
+  background-color: #f8f6f3;
+  border-radius: 3px;
+  color: var(--elevate-text);
+  padding: 2px 6px;
+}
+
+/* Tables */
+table {
+  th {
+    background-color: #f8f6f3;
+    border-bottom: 2px solid var(--elevate-border);
+  }
+
+  td {
+    border-bottom: 1px solid var(--elevate-border);
+  }
+}
+
+/* Horizontal Rules */
+hr {
+  border-color: var(--elevate-border);
+}
+
+/* ========================================
+   Responsive Adjustments
+   ======================================== */
+
+@media (max-width: 767px) {
+  body {
+    font-size: 15px;
+  }
+
+  .topic-post article {
+    padding: 1rem;
+  }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
 @media print {
-  .d-header,
-  footer,
-  .nav-pills,
-  .topic-timeline {
-    display: none;
+  body {
+    background-color: white;
   }
 
-  .topic-post {
-    border: 1px solid #ccc;
-    page-break-inside: avoid;
+  .d-header,
+  .footer-wrapper,
+  #reply-control,
+  .timeline-container {
+    display: none;
   }
 }

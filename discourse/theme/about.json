@@ -8,28 +8,16 @@
   "minimum_discourse_version": "3.0.0",
   "color_schemes": {
     "ELEVATE Light": {
-      "primary": "2D3E50",
-      "secondary": "7FB3D5",
-      "tertiary": "E67E22",
-      "quaternary": "95A5A6",
-      "header_background": "FFFFFF",
-      "header_primary": "2D3E50",
-      "highlight": "F39C12",
-      "danger": "E74C3C",
+      "primary": "000000",
+      "secondary": "F5F0E8",
+      "tertiary": "7FB3D5",
+      "quaternary": "E67E22",
+      "header_background": "F5F0E8",
+      "header_primary": "000000",
+      "highlight": "E67E22",
+      "danger": "D24B5A",
       "success": "27AE60",
       "love": "E67E22"
-    },
-    "ELEVATE Dark": {
-      "primary": "7FB3D5",
-      "secondary": "34495E",
-      "tertiary": "F39C12",
-      "quaternary": "7F8C8D",
-      "header_background": "1A252F",
-      "header_primary": "ECF0F1",
-      "highlight": "E67E22",
-      "danger": "E74C3C",
-      "success": "2ECC71",
-      "love": "F39C12"
     }
   }
 }
