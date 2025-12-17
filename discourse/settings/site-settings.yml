@@ -268,10 +268,16 @@ emoji:
   emoji_set: "apple"
   default_emoji_reactions: "heart|+1|tada|thinking"
 
-## Sidebar
+## Navigation & Sidebar
+navigation:
+  navigation_menu: "sidebar" # Options: legacy, header_dropdown, sidebar
+
 sidebar:
   enable_sidebar: true
   enable_experimental_sidebar_hamburger: false
+  default_navigation_menu_categories: "latest|new|unread|top|categories"
+  default_sidebar_show_count_of_new_items: true
+  sidebar_list_destination: "all_topics"
 
 ## Mobile
 mobile:

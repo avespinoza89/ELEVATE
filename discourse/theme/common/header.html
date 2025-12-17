@@ -1,7 +1,12 @@
-<script type="text/discourse-plugin" version="0.8">
-  // ELEVATE Commons Simple Header
-  api.decorateWidget('home-logo:after', helper => {
-    return helper.h('div.elevate-tagline', 'Unite. Learn. ELEVATE');
+<script type="text/discourse-plugin" version="0.8.1">
+  // ELEVATE Commons Simple Header - Updated for modern Discourse
+  api.registerValueTransformer("header-logo-after", ({ value }) => {
+    value.push({
+      tagName: "div",
+      classNames: ["elevate-tagline"],
+      text: "Unite. Learn. ELEVATE"
+    });
+    return value;
   });
 </script>
 
