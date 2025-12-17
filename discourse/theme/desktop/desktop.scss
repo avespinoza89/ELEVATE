@@ -1,34 +1,36 @@
-/* ELEVATE Commons - Desktop Styles */
+/* ELEVATE Professional Theme - Desktop Enhancements */
 
-/* Topic List - Desktop */
-.topic-list {
-  .topic-list-item {
-    padding: 1rem 1.5rem;
-
-    .topic-excerpt {
-      display: block;
-      margin-top: 0.5rem;
-      color: var(--elevate-text-light);
-      line-height: 1.6;
-    }
+/* Enhanced spacing for larger screens */
+.topic-list-item {
+  .topic-excerpt {
+    display: block;
+    margin-top: 0.5rem;
   }
 }
 
-/* Category List - Desktop */
-.category-list-item {
-  padding: 1.5rem;
-}
-
-/* Composer - Desktop */
+/* Composer height */
 #reply-control {
   .d-editor-container {
-    min-height: 300px;
+    min-height: 350px;
   }
 }
 
-/* User Profile - Desktop */
-.user-main {
-  .user-content {
-    padding: 2rem;
+/* Sidebar enhancements */
+.sidebar-wrapper {
+  position: sticky;
+  top: 70px;
+}
+
+/* Category grid on desktop */
+@media (min-width: 1024px) {
+  .category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .category-list-item {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 300px;
   }
 }

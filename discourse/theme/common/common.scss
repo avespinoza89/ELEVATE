@@ -1,62 +1,37 @@
 /**
- * ELEVATE Commons Theme - Common Styles
- * Inspired by clean, minimal design principles
- * Version: 1.0.0
+ * ELEVATE Professional Theme
+ * Modern, clean design for professional communities
+ * Version: 2.0.0
  */
 
 /* ========================================
-   CSS Variables - ELEVATE Brand Colors
+   CSS Variables
    ======================================== */
 
 :root {
-  /* ELEVATE Brand Colors */
-  --elevate-primary: #7FB3D5;      /* Sky Blue - primary accent */
-  --elevate-secondary: #E67E22;    /* Warm Orange - secondary accent */
-  --elevate-tertiary: #2D3E50;     /* Deep Blue - tertiary accent */
-  --elevate-background: #F5F0E8;   /* Warm Beige - main background */
-  --elevate-text: #000000;         /* Black - primary text */
-  --elevate-text-light: #4a4a4a;   /* Dark Gray - secondary text */
-
-  /* Semantic Colors */
-  --elevate-success: #27AE60;
-  --elevate-danger: #D24B5A;
-  --elevate-warning: #F39C12;
-
-  /* UI Colors */
-  --elevate-border: #d4cec4;
-  --elevate-hover: #ebe5dd;
-  --elevate-selected: #e0d9cf;
+  --elevate-blue: #4299e1;
+  --elevate-orange: #ed8936;
+  --elevate-dark: #1a202c;
+  --elevate-gray: #718096;
+  --elevate-light: #f7fafc;
+  --elevate-border: #e2e8f0;
+  --elevate-hover: #edf2f7;
 }
 
 /* ========================================
-   Base Styles
+   Base & Typography
    ======================================== */
 
 body {
-  background-color: var(--elevate-background);
-  color: var(--elevate-text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--elevate-light);
+  color: var(--elevate-dark);
   line-height: 1.6;
 }
 
-/* ========================================
-   Typography
-   ======================================== */
-
 h1, h2, h3, h4, h5, h6 {
-  color: var(--elevate-text);
   font-weight: 600;
-  line-height: 1.3;
-}
-
-a {
-  color: var(--elevate-primary);
-  text-decoration: none;
-
-  &:hover {
-    color: var(--elevate-tertiary);
-    text-decoration: underline;
-  }
+  color: var(--elevate-dark);
 }
 
 /* ========================================
@@ -64,185 +39,32 @@ a {
    ======================================== */
 
 .d-header {
-  background-color: var(--elevate-background);
-  border-bottom: 1px solid var(--elevate-border);
-  box-shadow: none;
+  background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+  border-bottom: 2px solid var(--elevate-blue);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .d-header-wrap {
-  background-color: var(--elevate-background);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.title {
-  color: var(--elevate-text);
-  font-weight: 600;
-}
-
-.d-icon {
-  color: var(--elevate-text);
-}
-
-/* ========================================
-   Navigation & Sidebar
-   ======================================== */
-
-.navigation-topics {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
-
-.nav-pills > li > a {
-  color: var(--elevate-text-light);
+.title a {
+  font-weight: 700;
+  font-size: 1.3em;
+  color: var(--elevate-dark);
 
   &:hover {
-    background-color: var(--elevate-hover);
-    color: var(--elevate-text);
-  }
-
-  &.active {
-    background-color: var(--elevate-primary);
-    color: white;
+    color: var(--elevate-blue);
   }
 }
 
-/* ========================================
-   Categories
-   ======================================== */
-
-.category-list {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-
-  tbody tr {
-    border-bottom: 1px solid var(--elevate-border);
-
-    &:last-child {
-      border-bottom: none;
-    }
+.header-buttons {
+  .icon {
+    color: var(--elevate-gray);
 
     &:hover {
-      background-color: var(--elevate-hover);
-    }
-  }
-}
-
-.category-list-item {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  padding: 1rem;
-
-  &:hover {
-    background-color: var(--elevate-hover);
-  }
-}
-
-.category-logo {
-  border-radius: 4px;
-}
-
-.category-text-title {
-  color: var(--elevate-text);
-  font-weight: 600;
-}
-
-.category-text-description {
-  color: var(--elevate-text-light);
-}
-
-/* Category Boxes - Square Style */
-.badge-wrapper.box {
-  border-radius: 3px;
-}
-
-.badge-category {
-  border-radius: 3px;
-  padding: 4px 8px;
-}
-
-/* ========================================
-   Topics
-   ======================================== */
-
-.topic-list {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-
-  thead {
-    border-bottom: 1px solid var(--elevate-border);
-  }
-
-  tbody tr {
-    border-bottom: 1px solid var(--elevate-border);
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    &:hover {
-      background-color: var(--elevate-hover);
-    }
-  }
-}
-
-.topic-list-item {
-  &.visited {
-    .topic-title {
-      color: var(--elevate-text-light);
-    }
-  }
-}
-
-.topic-title {
-  color: var(--elevate-text);
-  font-weight: 500;
-}
-
-.topic-excerpt {
-  color: var(--elevate-text-light);
-}
-
-/* ========================================
-   Posts
-   ======================================== */
-
-.topic-post {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  margin-bottom: 1rem;
-
-  article {
-    padding: 1.5rem;
-  }
-}
-
-.topic-body {
-  background-color: white;
-}
-
-.cooked {
-  color: var(--elevate-text);
-
-  p {
-    margin-bottom: 1rem;
-  }
-}
-
-.post-menu-area {
-  .actions {
-    button {
-      color: var(--elevate-text-light);
-
-      &:hover {
-        background-color: var(--elevate-hover);
-        color: var(--elevate-text);
-      }
+      color: var(--elevate-blue);
     }
   }
 }
@@ -252,109 +74,317 @@ a {
    ======================================== */
 
 .btn {
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+  border: none;
 
   &.btn-primary {
-    background-color: var(--elevate-primary);
-    border-color: var(--elevate-primary);
+    background: linear-gradient(135deg, var(--elevate-blue) 0%, #3182ce 100%);
     color: white;
 
     &:hover {
-      background-color: var(--elevate-tertiary);
-      border-color: var(--elevate-tertiary);
+      background: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
     }
   }
 
-  &.btn-danger {
-    background-color: var(--elevate-danger);
-    border-color: var(--elevate-danger);
+  &.btn-default {
+    background-color: white;
+    border: 2px solid var(--elevate-border);
+    color: var(--elevate-dark);
 
     &:hover {
-      background-color: #b13e4a;
+      border-color: var(--elevate-blue);
+      color: var(--elevate-blue);
+      background-color: var(--elevate-hover);
     }
   }
 }
 
 /* ========================================
-   Forms
+   Categories
    ======================================== */
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea,
-.select-kit .select-kit-header {
+.category-list {
   background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  color: var(--elevate-text);
+  overflow: hidden;
+}
 
-  &:focus {
-    border-color: var(--elevate-primary);
-    outline: none;
+.category-list-item {
+  border-bottom: 1px solid var(--elevate-border);
+  padding: 1.5rem;
+  transition: background-color 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
   }
+
+  &:hover {
+    background-color: var(--elevate-hover);
+  }
+}
+
+.category-text-title {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: var(--elevate-dark);
+}
+
+.category-description {
+  color: var(--elevate-gray);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+.badge-category {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.85em;
+}
+
+/* ========================================
+   Topic List
+   ======================================== */
+
+.topic-list {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--elevate-border);
+  overflow: hidden;
+}
+
+.topic-list-header {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-bottom: 2px solid var(--elevate-border);
+
+  th {
+    font-weight: 600;
+    color: var(--elevate-dark);
+    text-transform: uppercase;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+  }
+}
+
+.topic-list-item {
+  border-bottom: 1px solid var(--elevate-border);
+  transition: all 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: var(--elevate-hover);
+    transform: translateX(2px);
+  }
+}
+
+.topic-list-data {
+  padding: 1rem;
+}
+
+.link-top-line {
+  .title {
+    font-weight: 600;
+    color: var(--elevate-dark);
+    font-size: 1.05em;
+
+    &:hover {
+      color: var(--elevate-blue);
+    }
+  }
+}
+
+.topic-statuses {
+  .d-icon {
+    color: var(--elevate-gray);
+  }
+}
+
+/* ========================================
+   Sidebar
+   ======================================== */
+
+.sidebar-wrapper {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid var(--elevate-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-section-wrapper {
+  border-bottom: 1px solid var(--elevate-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.sidebar-section-header {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  color: var(--elevate-gray);
+  padding: 1rem 1rem 0.5rem;
+}
+
+.sidebar-section-link {
+  padding: 0.75rem 1rem;
+  color: var(--elevate-dark);
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  margin: 0 0.5rem;
+
+  &:hover {
+    background-color: var(--elevate-hover);
+    color: var(--elevate-blue);
+    transform: translateX(2px);
+  }
+
+  &.active {
+    background-color: var(--elevate-blue);
+    color: white;
+    font-weight: 500;
+  }
+}
+
+/* ========================================
+   Post Stream
+   ======================================== */
+
+.topic-body {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid var(--elevate-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.topic-avatar {
+  .avatar {
+    border: 2px solid var(--elevate-border);
+    border-radius: 50%;
+  }
+}
+
+.username a {
+  color: var(--elevate-dark);
+  font-weight: 600;
+
+  &:hover {
+    color: var(--elevate-blue);
+  }
+}
+
+.post-date {
+  color: var(--elevate-gray);
+  font-size: 0.9em;
 }
 
 /* ========================================
    Composer
    ======================================== */
 
-.d-editor-container {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-}
-
-.d-editor-textarea-wrapper {
-  background-color: white;
-}
-
-.d-editor-preview-wrapper {
-  background-color: white;
-  border-left: 1px solid var(--elevate-border);
-}
-
 #reply-control {
   background-color: white;
-  border-top: 1px solid var(--elevate-border);
+  border-top: 2px solid var(--elevate-blue);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+
+  .d-editor-container {
+    border: 2px solid var(--elevate-border);
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+
+    &:focus-within {
+      border-color: var(--elevate-blue);
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+    }
+  }
+
+  .d-editor-textarea-wrapper {
+    background-color: white;
+  }
+}
+
+.title-input {
+  border: 2px solid var(--elevate-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+
+  &:focus {
+    border-color: var(--elevate-blue);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+    outline: none;
+  }
 }
 
 /* ========================================
-   Cards & Containers
+   User Menu
    ======================================== */
 
-.user-card,
-.group-card {
+.user-menu {
   background-color: white;
+  border-radius: 8px;
   border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.about.groups,
-.about.admins,
-.about.moderators {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  padding: 1.5rem;
+.menu-links-row {
+  border-bottom: 1px solid var(--elevate-border);
+}
+
+.menu-link {
+  color: var(--elevate-dark);
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--elevate-hover);
+    color: var(--elevate-blue);
+  }
 }
 
 /* ========================================
-   Badges & Labels
+   Badges & Tags
    ======================================== */
+
+.discourse-tag {
+  background-color: var(--elevate-hover);
+  color: var(--elevate-dark);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.85em;
+  font-weight: 500;
+  border: 1px solid var(--elevate-border);
+
+  &:hover {
+    background-color: var(--elevate-blue);
+    color: white;
+    border-color: var(--elevate-blue);
+  }
+}
 
 .badge-notification {
-  background-color: var(--elevate-primary);
+  background-color: var(--elevate-blue);
   color: white;
   border-radius: 12px;
-}
-
-.badge-notification.new-posts,
-.badge-notification.unread-posts {
-  background-color: var(--elevate-secondary);
+  font-weight: 600;
+  font-size: 0.8em;
 }
 
 /* ========================================
@@ -363,203 +393,66 @@ textarea,
 
 .search-menu {
   background-color: white;
+  border-radius: 8px;
   border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-
-  .results {
-    background-color: white;
-
-    .item {
-      border-bottom: 1px solid var(--elevate-border);
-
-      &:hover {
-        background-color: var(--elevate-hover);
-      }
-    }
-  }
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* ========================================
-   User Menu
-   ======================================== */
+.search-input {
+  border: 2px solid var(--elevate-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
 
-.menu-panel {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-}
-
-.quick-access-panel {
-  background-color: white;
-
-  li {
-    border-bottom: 1px solid var(--elevate-border);
-
-    &:hover {
-      background-color: var(--elevate-hover);
-    }
+  &:focus {
+    border-color: var(--elevate-blue);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+    outline: none;
   }
-}
-
-/* ========================================
-   Notifications
-   ======================================== */
-
-.notification {
-  border-bottom: 1px solid var(--elevate-border);
-
-  &:hover {
-    background-color: var(--elevate-hover);
-  }
-
-  &.unread {
-    background-color: #f8f6f3;
-  }
-}
-
-/* ========================================
-   Timeline
-   ======================================== */
-
-.topic-timeline {
-  .timeline-container {
-    background-color: white;
-    border: 1px solid var(--elevate-border);
-    border-radius: 4px;
-  }
-}
-
-/* ========================================
-   Suggested Topics
-   ======================================== */
-
-#suggested-topics {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  margin-top: 2rem;
-  padding: 1.5rem;
-
-  h3 {
-    color: var(--elevate-text);
-    margin-bottom: 1rem;
-  }
-}
-
-/* ========================================
-   User Profiles
-   ======================================== */
-
-.user-main {
-  .about {
-    background-color: white;
-    border: 1px solid var(--elevate-border);
-    border-radius: 4px;
-    padding: 1.5rem;
-  }
-}
-
-.user-content {
-  background-color: white;
-  border: 1px solid var(--elevate-border);
-  border-radius: 4px;
-  padding: 1.5rem;
 }
 
 /* ========================================
    Footer
    ======================================== */
 
-.footer-wrapper {
-  background-color: var(--elevate-background);
-  border-top: 1px solid var(--elevate-border);
-  color: var(--elevate-text-light);
-  padding: 2rem 0;
+.footer-message {
+  background: linear-gradient(135deg, var(--elevate-blue) 0%, #3182ce 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  text-align: center;
+
+  h3 {
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    color: white;
+    text-decoration: underline;
+    font-weight: 600;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 }
 
 /* ========================================
-   Utilities
+   Responsive
    ======================================== */
 
-.wrap {
-  background-color: var(--elevate-background);
-}
-
-/* Loading Indicator */
-.spinner {
-  border-color: var(--elevate-primary);
-}
-
-/* Quotes */
-aside.quote {
-  background-color: #f8f6f3;
-  border-left: 4px solid var(--elevate-primary);
-  border-radius: 0 4px 4px 0;
-}
-
-/* Code Blocks */
-pre {
-  background-color: #2b2b2b;
-  border-radius: 4px;
-
-  code {
-    background-color: transparent;
-  }
-}
-
-code {
-  background-color: #f8f6f3;
-  border-radius: 3px;
-  color: var(--elevate-text);
-  padding: 2px 6px;
-}
-
-/* Tables */
-table {
-  th {
-    background-color: #f8f6f3;
-    border-bottom: 2px solid var(--elevate-border);
+@media (max-width: 768px) {
+  .d-header {
+    border-bottom-width: 1px;
   }
 
-  td {
-    border-bottom: 1px solid var(--elevate-border);
-  }
-}
-
-/* Horizontal Rules */
-hr {
-  border-color: var(--elevate-border);
-}
-
-/* ========================================
-   Responsive Adjustments
-   ======================================== */
-
-@media (max-width: 767px) {
-  body {
-    font-size: 15px;
-  }
-
-  .topic-post article {
+  .category-list-item,
+  .topic-list-data {
     padding: 1rem;
   }
-}
 
-/* ========================================
-   Print Styles
-   ======================================== */
-
-@media print {
-  body {
-    background-color: white;
-  }
-
-  .d-header,
-  .footer-wrapper,
-  #reply-control,
-  .timeline-container {
-    display: none;
+  .topic-body {
+    padding: 1rem;
   }
 }

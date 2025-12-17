@@ -1,67 +1,40 @@
-/* ELEVATE Commons - Mobile Styles */
+/* ELEVATE Professional Theme - Mobile Optimizations */
 
-/* Mobile Touch Targets */
-a, button, .btn, .topic-list-item {
+/* Ensure touch-friendly targets */
+a, button, .btn {
   min-height: 44px;
-  display: flex;
-  align-items: center;
 }
 
-/* Mobile Topic List */
-.topic-list {
-  .topic-list-item {
-    padding: 1rem;
-
-    .topic-excerpt {
-      font-size: 0.9em;
-      margin-top: 0.5rem;
-      color: var(--elevate-text-light);
-      line-height: 1.5;
-    }
-  }
+.topic-list-item {
+  padding: 1rem !important;
 }
 
-/* Mobile Posts */
-.topic-post {
-  article {
-    padding: 1rem;
-  }
-
-  .cooked {
-    font-size: 1em;
-    line-height: 1.6;
-
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 4px;
-    }
-  }
-}
-
-/* Mobile Composer */
+/* Mobile composer */
 #reply-control {
-  .submit-panel {
-    .create {
-      width: 100%;
-      padding: 1rem;
-      font-size: 1.05em;
-    }
+  .submit-panel .create {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.05em;
+  }
+
+  .d-editor-container {
+    min-height: 200px;
   }
 }
 
-/* Mobile Buttons */
-.btn {
-  padding: 0.75rem 1.5rem;
-  font-size: 1em;
+/* Mobile images */
+.cooked img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
-/* Mobile Category List */
-.category-list-item {
-  padding: 1rem;
-}
-
-/* Mobile Spacing */
+/* Mobile spacing */
 .container {
   padding: 0 1rem;
+}
+
+.category-list-item,
+.topic-body {
+  margin-bottom: 1rem;
 }
