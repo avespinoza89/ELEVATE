@@ -1,0 +1,16 @@
+en:
+  js:
+    deepl_translation:
+      preferred_language: "Preferred Language for Chat Translation"
+      select_language: "Select your language..."
+      language_preference_help: "Chat messages will be automatically translated to your preferred language when possible."
+      translated_from: "Translated from"
+      show_original: "Show Original"
+      show_translation: "Show Translation"
+      translating: "Translating..."
+      translation_error: "Translation unavailable"
+      toggle_translation: "Toggle translation"
+
+  deepl_translation:
+    title: "DeepL Chat Translation"
+    description: "Enables peer-to-peer real-time translation in chat using DeepL API"

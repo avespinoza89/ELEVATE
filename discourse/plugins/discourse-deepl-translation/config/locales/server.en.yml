@@ -1,0 +1,9 @@
+en:
+  site_settings:
+    deepl_translation_enabled: "Enable DeepL chat translation"
+    deepl_api_key: "DeepL API Key"
+    deepl_use_pro_api: "Use DeepL Pro API"
+    deepl_show_original_option: "Show option to view original message"
+    deepl_auto_translate: "Automatically translate messages"
+    deepl_cache_translations: "Cache translations"
+    deepl_translate_code_blocks: "Translate code blocks"
