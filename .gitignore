@@ -1,0 +1,37 @@
+# API Keys and Secrets
+discourse/plugins/discourse-deepl-translation/CONFIGURATION.md
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# API credentials
+**/api-keys.txt
+**/credentials.json
+**/*-credentials.*
+
+# Discourse specific
+*.rdb
+*.pid
+*.sock
+log/*.log
+tmp/
+
+# MacOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Backup files
+*.bak
+*.backup
