@@ -1,0 +1,33 @@
+plugins:
+  deepl_translation_enabled:
+    default: false
+    client: true
+    description: "Enable DeepL real-time chat translation"
+
+  deepl_api_key:
+    default: ''
+    description: "Your DeepL API key (get one at https://www.deepl.com/pro-api)"
+    secret: true
+
+  deepl_use_pro_api:
+    default: false
+    description: "Use DeepL Pro API endpoint (uncheck for Free API)"
+
+  deepl_show_original_option:
+    default: true
+    client: true
+    description: "Show option to view original message text"
+
+  deepl_auto_translate:
+    default: true
+    client: true
+    description: "Automatically translate messages (if false, users must click to translate)"
+
+  deepl_cache_translations:
+    default: true
+    description: "Cache translations to reduce API calls (recommended)"
+
+  deepl_translate_code_blocks:
+    default: false
+    client: true
+    description: "Attempt to translate text within code blocks (not recommended)"

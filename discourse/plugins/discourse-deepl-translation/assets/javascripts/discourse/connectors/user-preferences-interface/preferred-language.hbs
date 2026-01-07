@@ -1,0 +1,16 @@
+{{#if siteSettings.deepl_translation_enabled}}
+  <div class="control-group deepl-language-preference">
+    <label class="control-label">{{i18n "deepl_translation.preferred_language"}}</label>
+    <div class="controls">
+      <ComboBox
+        @value={{this.model.custom_fields.preferred_language}}
+        @content={{this.model.preferredLanguageOptions}}
+        @onChange={{action (mut this.model.custom_fields.preferred_language)}}
+        @options={{hash none="deepl_translation.select_language"}}
+      />
+      <div class="instructions">
+        {{i18n "deepl_translation.language_preference_help"}}
+      </div>
+    </div>
+  </div>
+{{/if}}

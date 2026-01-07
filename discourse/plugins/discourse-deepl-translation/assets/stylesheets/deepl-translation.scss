@@ -1,0 +1,136 @@
+.deepl-translation-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5em;
+  padding: 0.5em;
+  background: var(--primary-very-low);
+  border-left: 3px solid var(--tertiary);
+  border-radius: 4px;
+  font-size: 0.9em;
+
+  .translation-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    color: var(--primary-medium);
+    font-weight: 500;
+
+    .translation-icon {
+      color: var(--tertiary);
+      flex-shrink: 0;
+    }
+  }
+
+  .toggle-original {
+    font-size: 0.85em;
+    padding: 0.3em 0.6em;
+    color: var(--tertiary);
+    background: transparent;
+    border: 1px solid var(--tertiary);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--tertiary-low);
+      border-color: var(--tertiary-hover);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.chat-message-container {
+  &.showing-original {
+    .deepl-translation-badge {
+      background: var(--tertiary-very-low);
+      border-left-color: var(--quaternary);
+    }
+  }
+}
+
+.deepl-language-preference {
+  margin: 1.5em 0;
+
+  .control-label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    display: block;
+  }
+
+  .instructions {
+    margin-top: 0.5em;
+    color: var(--primary-medium);
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  .combo-box {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+// Chat-specific styling
+.chat-message {
+  .deepl-translation-badge {
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+}
+
+// Mobile responsiveness
+@media (max-width: 768px) {
+  .deepl-translation-badge {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5em;
+
+    .toggle-original {
+      align-self: flex-end;
+    }
+  }
+}
+
+// Loading state
+.deepl-translation-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.3em 0.6em;
+  background: var(--primary-very-low);
+  border-radius: 3px;
+  font-size: 0.85em;
+  color: var(--primary-medium);
+
+  &::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--tertiary);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Error state
+.deepl-translation-error {
+  padding: 0.5em;
+  background: var(--danger-low);
+  border-left: 3px solid var(--danger);
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: var(--danger);
+  margin-top: 0.5em;
+}
