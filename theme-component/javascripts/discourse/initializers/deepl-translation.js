@@ -15,27 +15,65 @@ const LANGUAGE_NAMES = {
 };
 
 function initializeDeeplTranslation(api) {
-  const siteSettings = api.container.lookup("service:site-settings");
+  console.log('[DeepL] Plugin initializing...');
+
+  // Get theme settings - try multiple methods
+  let themeSettings = null;
+
+  try {
+    // Method 1: Check if settings object exists (global)
+    if (typeof settings !== 'undefined') {
+      themeSettings = settings;
+      console.log('[DeepL] Using global settings');
+    }
+  } catch (e) {
+    console.log('[DeepL] Global settings not available');
+  }
+
+  // Method 2: Try to get from site settings
+  try {
+    const siteSettings = api.container.lookup("service:site-settings");
+    if (siteSettings) {
+      console.log('[DeepL] Site settings available');
+    }
+  } catch (e) {
+    console.log('[DeepL] Site settings not accessible');
+  }
+
+  // If no settings found, log error and exit
+  if (!themeSettings) {
+    console.error('[DeepL] ❌ Theme settings not accessible. Theme component may not be loaded correctly.');
+    console.error('[DeepL] Make sure the theme component is added to your active theme.');
+    return;
+  }
+
+  console.log('[DeepL] ✅ Settings loaded');
+  console.log('[DeepL] API Key configured:', themeSettings.deepl_api_key ? 'Yes (***' + themeSettings.deepl_api_key.slice(-4) + ')' : 'No');
+  console.log('[DeepL] Auto-translate:', themeSettings.auto_translate_enabled);
+  console.log('[DeepL] Default language:', themeSettings.default_language);
 
   // Translation service
   const DeepLTranslator = {
 
     getApiUrl() {
-      return settings.deepl_use_free_api ? DEEPL_FREE_API : DEEPL_PRO_API;
+      return themeSettings.deepl_use_free_api ? DEEPL_FREE_API : DEEPL_PRO_API;
     },
 
     async translate(text, targetLang, sourceLang = null) {
-      const apiKey = settings.deepl_api_key;
+      const apiKey = themeSettings.deepl_api_key;
 
       if (!apiKey || apiKey.trim() === '') {
-        console.error('[DeepL] API key not configured');
+        console.error('[DeepL] ❌ API key not configured in theme settings');
         return null;
       }
 
       // Check cache first
-      if (settings.cache_translations) {
+      if (themeSettings.cache_translations) {
         const cached = this.getCached(text, targetLang);
-        if (cached) return cached;
+        if (cached) {
+          console.log('[DeepL] ✅ Using cached translation');
+          return cached;
+        }
       }
 
       const url = `${this.getApiUrl()}/translate`;
@@ -49,6 +87,8 @@ function initializeDeeplTranslation(api) {
         params.append('source_lang', this.normalizeLanguageCode(sourceLang));
       }
 
+      console.log('[DeepL] Translating to:', targetLang);
+
       try {
         const response = await fetch(url, {
           method: 'POST',
@@ -59,29 +99,32 @@ function initializeDeeplTranslation(api) {
         });
 
         if (!response.ok) {
-          console.error('[DeepL] API error:', response.status, await response.text());
+          const errorText = await response.text();
+          console.error('[DeepL] ❌ API error:', response.status, errorText);
           return null;
         }
 
         const data = await response.json();
 
         if (data.translations && data.translations[0]) {
+          console.log('[DeepL] ✅ Translation successful');
           const translation = {
             text: data.translations[0].text,
             detectedSourceLang: data.translations[0].detected_source_language?.toLowerCase() || sourceLang
           };
 
           // Cache the translation
-          if (settings.cache_translations) {
+          if (themeSettings.cache_translations) {
             this.setCached(text, targetLang, translation);
           }
 
           return translation;
         }
 
+        console.error('[DeepL] ❌ No translation in response');
         return null;
       } catch (error) {
-        console.error('[DeepL] Translation error:', error);
+        console.error('[DeepL] ❌ Translation error:', error);
         return null;
       }
     },
@@ -126,7 +169,7 @@ function initializeDeeplTranslation(api) {
     },
 
     getUserLanguage() {
-      return localStorage.getItem('deepl_user_language') || settings.default_language || 'en';
+      return localStorage.getItem('deepl_user_language') || themeSettings.default_language || 'en';
     },
 
     setUserLanguage(lang) {
@@ -134,17 +177,31 @@ function initializeDeeplTranslation(api) {
     }
   };
 
-  // Initialize the plugin
+  console.log('[DeepL] 🔍 Checking for chat elements...');
+
+  // Initialize language selector on page change
   api.onPageChange(() => {
 
-    // Add language selector to user menu
+    // Add language selector
     if (api.getCurrentUser()) {
       const addLanguageSelector = () => {
         const existingSelector = document.getElementById('deepl-language-selector');
-        if (existingSelector) return;
+        if (existingSelector) {
+          console.log('[DeepL] Language selector already exists');
+          return;
+        }
 
-        const chatContainer = document.querySelector('.chat-drawer');
-        if (!chatContainer) return;
+        // Try multiple chat selectors for different Discourse versions
+        const chatContainer = document.querySelector('.chat-drawer') ||
+                            document.querySelector('.chat-container') ||
+                            document.querySelector('[class*="chat"]');
+
+        if (!chatContainer) {
+          console.log('[DeepL] ⏳ Chat container not found yet');
+          return;
+        }
+
+        console.log('[DeepL] ✅ Found chat container:', chatContainer.className);
 
         const selectorHtml = `
           <div id="deepl-language-selector" class="deepl-language-selector">
@@ -162,26 +219,35 @@ function initializeDeeplTranslation(api) {
           </div>
         `;
 
-        const header = chatContainer.querySelector('.chat-drawer-header');
+        // Try to find header
+        const header = chatContainer.querySelector('.chat-drawer-header') ||
+                      chatContainer.querySelector('.chat-header') ||
+                      chatContainer.querySelector('[class*="header"]');
+
         if (header && !document.getElementById('deepl-language-selector')) {
           header.insertAdjacentHTML('beforeend', selectorHtml);
+          console.log('[DeepL] ✅ Language selector added');
 
           const select = document.getElementById('deepl-lang-select');
           if (select) {
             select.addEventListener('change', (e) => {
               DeepLTranslator.setUserLanguage(e.target.value);
-              console.log('[DeepL] Language changed to:', e.target.value);
-              // Refresh chat to show translations
-              location.reload();
+              console.log('[DeepL] 🌍 Language changed to:', e.target.value);
+              alert('Language changed to ' + LANGUAGE_NAMES[e.target.value] + '. Reload page to see translations.');
             });
           }
+        } else {
+          console.log('[DeepL] ⚠️ Could not find chat header to inject selector');
         }
       };
 
-      // Try to add selector when chat opens
-      setTimeout(addLanguageSelector, 1000);
+      // Try to add selector immediately
+      setTimeout(() => {
+        console.log('[DeepL] Attempting to add language selector...');
+        addLanguageSelector();
+      }, 1000);
 
-      // Also watch for chat drawer opening
+      // Also watch for chat opening
       const observer = new MutationObserver(() => {
         addLanguageSelector();
       });
@@ -190,115 +256,33 @@ function initializeDeeplTranslation(api) {
         childList: true,
         subtree: true
       });
+    } else {
+      console.log('[DeepL] No user logged in, skipping language selector');
     }
   });
 
-  // Intercept and translate chat messages
-  api.modifyClass("component:chat-message", {
-    pluginId: "deepl-chat-translation",
+  console.log('[DeepL] ✅ Plugin initialized successfully');
+  console.log('[DeepL] Waiting for chat to open...');
 
-    didInsertElement() {
-      this._super(...arguments);
-
-      if (!settings.auto_translate_enabled) return;
-      if (!settings.deepl_api_key) return;
-
-      const messageText = this.message?.message;
-      if (!messageText) return;
-
-      const userLang = DeepLTranslator.getUserLanguage();
-      const messageElement = this.element;
-
-      // Translate the message
-      this.translateMessage(messageText, userLang, messageElement);
-    },
-
-    async translateMessage(text, targetLang, element) {
-      try {
-        const translation = await DeepLTranslator.translate(text, targetLang);
-
-        if (!translation) return;
-
-        const sourceLang = translation.detectedSourceLang;
-
-        // Don't translate if same language
-        if (sourceLang === targetLang) return;
-
-        const translatedText = translation.text;
-        const messageContentElement = element.querySelector('.chat-message-text');
-
-        if (!messageContentElement) return;
-
-        // Store original text
-        if (!messageContentElement.dataset.originalText) {
-          messageContentElement.dataset.originalText = text;
-          messageContentElement.dataset.translatedText = translatedText;
-          messageContentElement.dataset.sourceLang = sourceLang;
-        }
-
-        // Replace with translated text
-        messageContentElement.innerHTML = translatedText;
-
-        // Add translation badge
-        if (settings.show_translation_badge) {
-          this.addTranslationBadge(element, sourceLang, text, translatedText);
-        }
-
-      } catch (error) {
-        console.error('[DeepL] Translation failed:', error);
-      }
-    },
-
-    addTranslationBadge(element, sourceLang, originalText, translatedText) {
-      const existingBadge = element.querySelector('.deepl-translation-badge');
-      if (existingBadge) return;
-
-      const languageName = LANGUAGE_NAMES[sourceLang] || sourceLang.toUpperCase();
-
-      const badgeHtml = `
-        <div class="deepl-translation-badge">
-          <span class="translation-indicator">
-            <svg class="translation-icon" width="14" height="14" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
-            </svg>
-            Translated from ${languageName}
-          </span>
-          ${settings.show_original_toggle ? `
-            <button class="btn-flat btn-small deepl-toggle-btn">Show Original</button>
-          ` : ''}
-        </div>
-      `;
-
-      const messageContainer = element.querySelector('.chat-message-container');
-      if (messageContainer) {
-        messageContainer.insertAdjacentHTML('beforeend', badgeHtml);
-
-        // Add toggle functionality
-        const toggleBtn = messageContainer.querySelector('.deepl-toggle-btn');
-        if (toggleBtn) {
-          toggleBtn.addEventListener('click', () => {
-            const messageContentElement = element.querySelector('.chat-message-text');
-            const isShowingOriginal = toggleBtn.dataset.showing === 'original';
-
-            if (isShowingOriginal) {
-              messageContentElement.innerHTML = messageContentElement.dataset.translatedText;
-              toggleBtn.textContent = 'Show Original';
-              toggleBtn.dataset.showing = 'translated';
-            } else {
-              messageContentElement.innerHTML = messageContentElement.dataset.originalText;
-              toggleBtn.textContent = 'Show Translation';
-              toggleBtn.dataset.showing = 'original';
-            }
-          });
-        }
-      }
+  // Test function available in console
+  window.testDeepLTranslation = async function() {
+    console.log('=== DeepL Translation Test ===');
+    const result = await DeepLTranslator.translate('Hello, how are you?', 'es');
+    console.log('Translation result:', result);
+    if (result) {
+      console.log('✅ Translation working! Result:', result.text);
+    } else {
+      console.log('❌ Translation failed');
     }
-  });
+  };
+
+  console.log('[DeepL] 💡 Test translation by running: testDeepLTranslation()');
 }
 
 export default {
   name: "deepl-chat-translation",
   initialize() {
-    withPluginApi("0.11.0", initializeDeeplTranslation);
+    console.log('[DeepL] Theme component loading...');
+    withPluginApi("0.8.0", initializeDeeplTranslation);
   }
 };
