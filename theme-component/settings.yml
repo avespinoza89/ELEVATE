@@ -1,0 +1,65 @@
+deepl_api_key:
+  type: string
+  default: ""
+  description: "Your DeepL API key (get one at https://www.deepl.com/pro-api). WARNING: This will be visible in browser - only use for testing!"
+
+deepl_use_free_api:
+  type: bool
+  default: true
+  description: "Use DeepL Free API endpoint (uncheck if using Pro)"
+
+auto_translate_enabled:
+  type: bool
+  default: true
+  description: "Automatically translate chat messages to user's preferred language"
+
+show_translation_badge:
+  type: bool
+  default: true
+  description: "Show translation indicator badge on translated messages"
+
+show_original_toggle:
+  type: bool
+  default: true
+  description: "Allow users to toggle between original and translated text"
+
+cache_translations:
+  type: bool
+  default: true
+  description: "Cache translations in browser localStorage to reduce API calls"
+
+default_language:
+  type: enum
+  default: "en"
+  choices:
+    - en
+    - es
+    - fr
+    - de
+    - it
+    - pt
+    - ru
+    - ja
+    - zh
+    - ko
+    - ar
+    - nl
+    - pl
+    - sv
+    - tr
+    - cs
+    - da
+    - fi
+    - el
+    - hu
+    - id
+    - nb
+    - ro
+    - sk
+    - uk
+    - bg
+    - et
+    - lt
+    - lv
+    - sl
+  description: "Default language for users who haven't set a preference"
