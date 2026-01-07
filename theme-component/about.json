@@ -4,9 +4,5 @@
   "about_url": "https://github.com/avespinoza89/ELEVATE",
   "license_url": null,
   "theme_version": "1.0.0",
-  "minimum_discourse_version": "2.5.0",
-  "assets": {
-    "head-tag": "common/head_tag.html",
-    "common-scss": "common/common.scss"
-  }
+  "minimum_discourse_version": "2.5.0"
 }
